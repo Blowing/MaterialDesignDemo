@@ -1,14 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <TextView
+        android:id="@+id/text_plug"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:text="这是插件"
         android:textColor="@color/colorAccent"
         android:textSize="20sp"
         android:gravity="center"/>
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/float_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|right"
+        android:layout_margin="16dp"
+        android:src="@mipmap/ic_launcher"
+        app:backgroundTint="@color/colorPrimary"
+        app:rippleColor="@color/colorAccent"
+        app:fabSize="normal"
+        app:layout_anchor="@id/text_plug"
+        app:pressedTranslationZ="25dp"
+        app:layout_anchorGravity="bottom|right|end"/>
 
-</LinearLayout>
+</android.support.design.widget.CoordinatorLayout>
