@@ -6,7 +6,9 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Gravity;
 import android.view.View;
+import android.widget.PopupWindow;
 
 import com.wujie.materialdesigndemo.fragment.PlugFragment;
 import com.wujie.materialdesigndemo.fragment.RouterFragment;
@@ -17,12 +19,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private FragmentManager mFragmentManager;
     private FragmentTransaction mTransaction ;
+    PopupWindow popupWindow;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initFragment();
         initView();
+        popupWindow = new PopupWindow(getLayoutInflater().inflate(R.layout.layout, null), 300,300);
+
     }
 
     private void initFragment () {
@@ -69,5 +74,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //        mTransaction.replace(R.id.frame_content, mFragment);
 //        mTransaction.commit();
         startActivity(new Intent(this, ViedeoActivity.class));
+        //popupWindow.showAtLocation(findViewById(R.id.btn_pluging), Gravity.CENTER_VERTICAL, 1, 2);
     }
 }

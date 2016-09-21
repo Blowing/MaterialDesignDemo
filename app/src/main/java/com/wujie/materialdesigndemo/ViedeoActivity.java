@@ -8,6 +8,8 @@ import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.VideoView;
 
@@ -15,6 +17,7 @@ public class ViedeoActivity extends AppCompatActivity {
 
     VideoView mVideoView;
     TextView mTimeText;
+    PopupWindow popupWindow;
     String url = "/storage/sdcard0/ddmsrec.mp4";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +32,14 @@ public class ViedeoActivity extends AppCompatActivity {
                 mTimeText.setText(mVideoView.getDuration()+"");
             }
         });
+        popupWindow = new PopupWindow(getLayoutInflater().inflate(R.layout.layout, null), 300,300);
         getSDVideo();
+        mTimeText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                popupWindow.showAsDropDown(view);
+            }
+        });
 
     }
 
