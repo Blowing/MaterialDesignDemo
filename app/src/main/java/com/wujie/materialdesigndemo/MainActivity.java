@@ -1,5 +1,6 @@
 package com.wujie.materialdesigndemo;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -29,6 +30,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mTransaction = mFragmentManager.beginTransaction();
         RouterFragment routerFragment = new RouterFragment();
         mTransaction.add(R.id.frame_content, routerFragment);
+        mTransaction.addToBackStack("router");
         mTransaction.commit();
     }
 
@@ -42,22 +44,30 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View view) {
         Fragment mFragment = null;
+        mTransaction = mFragmentManager.beginTransaction();
         switch (view.getId()) {
             case R.id.btn_pluging:
+
                 mFragment = new PlugFragment();
+                mTransaction.addToBackStack("plug");
                 break;
             case R.id.btn_router:
                 mFragment = new RouterFragment();
+                mTransaction.addToBackStack("router");
                 break;
             case R.id.btn_util:
                 mFragment = new UtilFragment();
+                mTransaction.addToBackStack("util");
                 break;
             case R.id.btn_usb:
                 mFragment = new UsbFragment();
+                mTransaction.addToBackStack("usb");
                 break;
         }
-        mTransaction = mFragmentManager.beginTransaction();
-        mTransaction.replace(R.id.frame_content, mFragment);
-        mTransaction.commit();
+
+       // mTransaction.detach(mFragment);
+//        mTransaction.replace(R.id.frame_content, mFragment);
+//        mTransaction.commit();
+        startActivity(new Intent(this, ViedeoActivity.class));
     }
 }
